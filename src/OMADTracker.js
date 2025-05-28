@@ -1,10 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
 
 export default function OMADTracker() {
   const [entries, setEntries] = useState([]);
   const [weight, setWeight] = useState("");
   const [note, setNote] = useState("");
+
+  // Load data from localStorage when app loads
+  useEffect(() => {
+    const stored = localStorage.getItem("omad-entries");
+    if (stored) {
+      setEntries(JSON.parse(stored));
+    }
+  }, []);
+
+  // Save to localStorage when entries change
+  useEffect(() => {
+    localStorage.setItem("omad-entries", JSON.stringify(entries));
+  }, [entries]);
 
   const addEntry = () => {
     if (!weight) return;
