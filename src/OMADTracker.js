@@ -1,3 +1,4 @@
+import ExportData from './ExportData';
 import { useState, useEffect } from "react";
 import {
   LineChart,
@@ -137,6 +138,7 @@ export default function OMADTracker() {
               Thêm bản ghi
             </button>
           </div>
+          <ExportData entries={entries} />
 
           {entries.length > 0 && (
             <div>
