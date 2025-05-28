@@ -1,7 +1,10 @@
-import OMADTracker from './OMADTracker';
-
+import OMADTracker from './components/OMADTracker';
 function App() {
-  return <OMADTracker />;
+  return (
+    <div>
+      <OMADTracker />
+    </div>
+  );
 }
 
 export default App;
